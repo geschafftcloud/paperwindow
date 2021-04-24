@@ -15,6 +15,7 @@ RUN dpkg --add-architecture i386 && \
     mkdir /opt/wine-stable/share/wine/gecko && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86_64.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86_64.msi && \
     apt-get -y full-upgrade && apt-get clean && rm -rf /var/lib/apt/lists/*
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD app/* /root/app/
 
 ENV WINEPREFIX /root/prefix32
 ENV WINEARCH win32
