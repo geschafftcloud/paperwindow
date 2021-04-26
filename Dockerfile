@@ -17,9 +17,8 @@ RUN dpkg --add-architecture i386 && \
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD app/* /root/app/
 
-ENV WINEPREFIX /root/prefix32
-ENV WINEARCH win32
-ENV DISPLAY :0
+ENV WINEPREFIX /root/prefix64
+ENV WINEARCH win64
 
 WORKDIR /root/
 RUN wget -O - https://github.com/geschafftcloud/noVNC/archive/gv1.2.0.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-1.1.0 /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html && \
