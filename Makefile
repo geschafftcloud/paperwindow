@@ -1,8 +1,9 @@
 build:
-	docker build -t wine-x11-novnc-docker .
+	docker build -t webwine-plus .
 
-run: build
-	docker run --rm -p 18080:8080 wine-x11-novnc-docker
+run1080p:
+    xrandr --output VGA-1 --mode 1920x1080
+	./x11docker --xvfb --size=1920x1080 -g -- -p 4200:8080 -- webwine-plus
 
-shell: build
-	docker run --rm -ti -p 18080:8080 wine-x11-novnc-docker bash
+run1080p-cpu:
+	./x11docker --xvfb --size=1920x1080 -- -p 4200:8080 -- webwine-plus
