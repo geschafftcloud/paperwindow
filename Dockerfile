@@ -12,7 +12,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get -y install gnupg2 wget && \
     echo "deb [arch=amd64] https://xpra.org/ focal main" > /etc/apt/sources.list.d/xpra.list && \
     wget -O - https://xpra.org/gpg.asc | apt-key add - && \
-    apt-get update && apt-get -y install python2 python-is-python2 xrdp build-essential dpkg-dev libpulse-dev x11vnc xpra pulseaudio xdotool tar supervisor net-tools fluxbox mesa-utils && \
+    apt-get update && apt-get -y install python2 python-is-python2 build-essential dpkg-dev libpulse0 x11vnc xpra pulseaudio xdotool tar supervisor net-tools fluxbox mesa-utils && \
     wget -O - https://dl.winehq.org/wine-builds/winehq.key | apt-key add -  && \
     echo 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' |tee /etc/apt/sources.list.d/winehq.list && \
     apt-get update && apt-get -y install winehq-stable && \
