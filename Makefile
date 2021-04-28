@@ -1,6 +1,9 @@
 build:
 	docker build -t paperwindow .
 
+prepareaudio:
+	pulseaudio --start &
+
 run1080p:
 	chmod +x x11docker
 	sudo xrandr --fb 1920x1080
