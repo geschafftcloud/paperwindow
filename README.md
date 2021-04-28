@@ -1,41 +1,37 @@
-# `webwine`
-Geschafft's fork of solarkennedy's open-source `wine-x11-novnc-docker`.
+> #### Geschafft Open Source
+> Paperwindow is one of the ways we give back to the open source community.
 
----
+# *Paperwindow*
+Host desktop software on your server and stream it to anything that has a web browser.
 
-## wine-x11-novnc-docker
+## Architecture
+Paperwindow uses Xpra to stream content, Supervisord to manage processes, Fluxbox as a window manager, and Wine for running Windows apps when necessary. Pulseaudio is used to grab and stream audio. Most stuff runs inside Docker/X11Docker.
 
-Not a very good name, is it?
+## Usage
+Everything you need to know about using Paperwindow.
 
-Ever wanted to containerize your wine applications and access them via
-a web browser? No? Neither did I!
+### Setup
+This is a base Docker image. Fork/clone it and add something to run in the `app` directory. This directory should contain all assets, and a launcher called either `launcher.sh` (for standard Linux apps) or `launcher.exe` (for Windows apps).
 
-This container runs:
+### Back-end usage
+The `Makefile` should serve as a template for usage of Paperwindow. Keep in mind that Paperwindow does do automatic scaling, but fullscreen apps sometimes have strange behavior with this.
 
-* Xvfb - X11 in a virtual framebuffer
-* x11vnc - A VNC server that scrapes the above X11 server
-* [noNVC](https://kanaka.github.io/noVNC/) - A HTML5 canvas vnc viewer
-* Fluxbox - a small window manager
-* Explorer.exe - to demo that it works
+### Front-end
+By default, Paperwindow serves the Xpra HTML5 client. However, you can always connect your own external modified client to it.
 
-This is a [trusted build](https://registry.hub.docker.com/u/solarkennedy/wine-x11-novnc-docker/)
-on the Docker Hub.
+## Credits
+Paperwindow is based off of some of the open source work of Kyle Anderson. It was modified by Cedric Kim for optimized use at Geschafft, and eventually we open-sourced our version to give back to the community.
 
-## Run It
+## ASCII art logo
+(May look strange on smaller screens)
 
-    docker run --rm -p 8080:8080 solarkennedy/wine-x11-novnc-docker
-    xdg-open http://localhost:8080
+```
+                                          _           __             
+    ____  ____ _____  ___  ______      __(_)___  ____/ /___ _      __
+   / __ \/ __ `/ __ \/ _ \/ ___/ | /| / / / __ \/ __  / __ \ | /| / /
+  / /_/ / /_/ / /_/ /  __/ /   | |/ |/ / / / / / /_/ / /_/ / |/ |/ / 
+ / .___/\__,_/ .___/\___/_/    |__/|__/_/_/ /_/\__,_/\____/|__/|__/  
+/_/         /_/                                                      
 
-In your web browser you should see the default application, explorer.exe:
-
-![Explorer Screenshot](https://raw.githubusercontent.com/solarkennedy/wine-x11-novnc-docker/master/screenshot.png)
-
-## Modifying
-
-This is a base image. You should fork or use this base image to run your own
-wine programs?
-
-## Issues
-
-* Wine could be optimized a bit
-* Fluxbox could be skinned or reduced
+More ASCII art in asciiart.txt :)
+```
