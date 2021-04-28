@@ -17,7 +17,7 @@ If you don't need GPU acceleration, you only need these dependencies.
 $ sudo apt-get install xvfb xserver-xephyr xorg pulseaudio
 ```
 
-Otherwise you additionally need any related GPU drivers.
+Otherwise you additionally need any related GPU drivers (as well as weston, xwayland, and xdotools)
 
 ### Setup
 This is a base Docker image. Fork/clone it and add something to run in the `app` directory. This directory should contain all assets, and a launcher called either `launcher.sh` (for standard Linux apps) or `launcher.exe` (for Windows apps).
