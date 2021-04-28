@@ -9,4 +9,4 @@ run1080p:
 run1080p-cpu:
 	chmod +x x11docker
 	sudo xrandr --fb 1920x1080
-	./x11docker --xvfb --size=1920x1080 --pulseaudio -p 8080:8080 -- paperwindow
+	./x11docker --xvfb --size=1920x1080 --pulseaudio -- -p 8080:8080 -- paperwindow
