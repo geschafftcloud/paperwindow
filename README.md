@@ -25,6 +25,9 @@ This is a base Docker image. Fork/clone it and add something to run in the `app`
 ### Back-end usage
 The `Makefile` should serve as a template for usage of Paperwindow. Keep in mind that Paperwindow does do automatic scaling, but fullscreen apps sometimes have strange behavior with this.
 
+#### SSL
+Check `run1080p-ssl` in the `Makefile` for the base command for SSL. The certificate to use should be named `cert.pem` and placed in the current working directory (symlinks should also work).
+
 ### Front-end
 By default, Paperwindow serves the Xpra HTML5 client. However, you can always connect your own external modified client to it.
 
